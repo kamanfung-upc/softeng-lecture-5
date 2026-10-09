@@ -8,7 +8,6 @@ The only actor is the city clerk.
 
 ![Use case diagram](docs/use-case-diagram.drawio.png)
 
-- `Search persons` and `Search vehicles` are two kinds of `Search` (generalization).
 - `Calculate vehicle tax` is included by `Transfer vehicle` and `Generate annual tax listing`.
 - `Remove vehicle from previous owner` extends `Transfer vehicle`. It only happens when the vehicle already had an owner.
 
@@ -22,12 +21,13 @@ The only actor is the city clerk.
 | Add vehicle | The clerk gives plate, maker, model, type (motorcycle, petrol, diesel, hybrid) and engine displacement or CO2 emissions. The system saves the vehicle without owner (dealership). | Plate already exists: error, nothing is added. |
 | Edit vehicle | The clerk gives the plate and the new maker and model. The system saves the changes. | Vehicle not found: error. |
 | Delete vehicle | The clerk gives the plate. The system removes the vehicle from its owner and from the system. | Vehicle not found: error. No owner: only removed from the system. |
-| Search | The clerk writes a text. Persons are matched by license, name or surname. Vehicles by plate, maker or model. | No match: empty list. |
+| Search persons | The clerk writes a text. The system returns the persons whose license, name or surname contain it. | No match: empty list. |
+| Search vehicles | The clerk writes a text. The system returns the vehicles whose plate, maker or model contain it. | No match: empty list. |
 | Calculate vehicle tax | Motorcycle: 10% of engine displacement. Petrol car: 1.4 €/g CO2. Diesel: 1.8 €/g. Hybrid: 1.2 €/g. | None. |
 
-#### Transfer vehicle
+#### 1.1 Transfer vehicle
 
-**Description:** a vehicle is sold or transferred to a person. The system gives it to the buyer and returns the annual tax. Covers the sale from the dealership and the transfer between two persons.
+A vehicle is sold or transferred to a person. The system gives it to the buyer and returns the annual tax. Covers the sale from the dealership and the transfer between two persons.
 
 **Primary actor:** city clerk.
 
@@ -46,9 +46,9 @@ The only actor is the city clerk.
 - 2a. Vehicle or buyer not found: error, returns 0, nothing changes.
 - 3a. The vehicle has an owner (*Remove vehicle from previous owner*): the system removes it from the previous owner and continues at step 4.
 
-#### Generate annual tax listing
+#### 1.2 Generate annual tax listing
 
-**Description:** once a year the system prints every owner with its vehicles, the tax of each vehicle and the owner total.
+Once a year the system prints every owner with its vehicles, the tax of each vehicle and the owner total.
 
 **Primary actor:** city clerk.
 
@@ -90,4 +90,4 @@ The `opt` block only runs when the vehicle already had an owner.
 
 ## 4. Implementation in Java
 
-All the classes are in `src/`. `Main` runs every use case. Only `java.util.ArrayList` is used.
+All the classes are in `src/`. `Main` runs every use case.
