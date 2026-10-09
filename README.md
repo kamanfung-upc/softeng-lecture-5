@@ -1,15 +1,15 @@
 # Software Architecture - OOD Exercise 1: Vehicle taxes
 
-System for a city to manage the taxes of vehicles (cars and motorcycles) and their owners.
+System for a city to manage the taxes of vehicles and their owners.
 
 ## 1. Use cases
 
-The only actor is the city clerk.
+In this case, the only actor is the city clerk:
 
 ![Use case diagram](docs/use-case-diagram.drawio.png)
 
 - `Calculate vehicle tax` is included by `Transfer vehicle` and `Generate annual tax listing`.
-- `Remove vehicle from previous owner` extends `Transfer vehicle`. It only happens when the vehicle already had an owner.
+- `Remove vehicle from previous owner` extends `Transfer vehicle`, this only happens when the vehicle already had an owner.
 
 ### Use case descriptions
 
@@ -27,7 +27,7 @@ The only actor is the city clerk.
 
 #### 1.1 Transfer vehicle
 
-A vehicle is sold or transferred to a person. The system gives it to the buyer and returns the annual tax. Covers the sale from the dealership and the transfer between two persons.
+A vehicle can be sold or transferred to a person. The system gives it to the buyer and returns the annual tax. Covers the sale from the dealership and the transfer between two persons.
 
 **Primary actor:** city clerk.
 
@@ -90,4 +90,4 @@ The `opt` block only runs when the vehicle already had an owner.
 
 ## 4. Implementation in Java
 
-All the classes are in `src/`. `Main` runs every use case.
+All the classes are in `src/`, `Main` runs every use case.
